@@ -11,6 +11,14 @@
     --border-radius: 10px;
     --transition-speed: 0.3s;
     --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --container-bg: rgba(255, 255, 255, 0.95);
+}
+
+[data-theme="dark"] {
+    --background-color: #1a1a1a;
+    --container-bg: rgba(30, 30, 30, 0.95);
+    --text-color: #ffffff;
+    --text-light: #cccccc;
 }
 
 /* Animations */
@@ -440,6 +448,7 @@ body {
     right: 0;
     top: 0;
     transition: .4s;
+    border-radius: 34px;
 }
 
 .slider:before {
@@ -451,6 +460,7 @@ body {
     position: absolute;
     transition: .4s;
     width: 26px;
+    border-radius: 50%;
 }
 
 input:checked + .slider {
@@ -459,14 +469,6 @@ input:checked + .slider {
 
 input:checked + .slider:before {
     transform: translateX(26px);
-}
-
-.slider.round {
-    border-radius: 34px;
-}
-
-.slider.round:before {
-    border-radius: 50%;
 }
 
 /* Footer Styles */

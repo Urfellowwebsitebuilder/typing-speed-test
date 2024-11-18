@@ -99,24 +99,25 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Dark mode toggle functionality
-const toggleSwitch = document.querySelector('#checkbox');
+const themeButton = document.getElementById('themeButton');
+const themeIcon = themeButton.querySelector('.theme-icon');
+const themeText = themeButton.querySelector('.theme-text');
 const currentTheme = localStorage.getItem('theme');
 
+// Set initial theme
 if (currentTheme) {
     document.documentElement.setAttribute('data-theme', currentTheme);
-    if (currentTheme === 'dark') {
-        toggleSwitch.checked = true;
-    }
+    updateThemeButton(currentTheme === 'dark');
 }
 
-function switchTheme(e) {
-    if (e.target.checked) {
-        document.documentElement.setAttribute('data-theme', 'dark');
-        localStorage.setItem('theme', 'dark');
-    } else {
-        document.documentElement.setAttribute('data-theme', 'light');
-        localStorage.setItem('theme', 'light');
-    }
-}
+themeButton.addEventListener('click', () => {
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    document.documentElement.setAttribute('data-theme', isDark ? 'light' : 'dark');
+    localStorage.setItem('theme', isDark ? 'light' : 'dark');
+    updateThemeButton(!isDark);
+});
 
-toggleSwitch.addEventListener('change', switchTheme);
+function updateThemeButton(isDark) {
+    themeIcon.textContent = isDark ? '☀️' : '🌙';
+    themeText.textContent = isDark ? 'Light Mode' : 'Dark Mode';
+}
